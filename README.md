@@ -5,6 +5,9 @@
 ## 运行步骤
 
 ``` bash
+# Git拉取原型项目
+git clone https://github.com/kongshanxuelin/vue2-qbui.git
+
 # 安装依赖
 npm i
 
