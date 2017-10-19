@@ -1,6 +1,6 @@
 # 项目说明
 
-> 适用于符合QB风格的 **单页面** Web应用
+> 适用于符合QB风格的 **单页面** Web应用，[在线Demo](http://vueqbui.sumslack.com)
 
 ## 运行步骤
 
