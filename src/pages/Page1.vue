@@ -1,6 +1,6 @@
 <template >
   <div>
-   Page2
+    Page1
   </div>
 </template>
 
@@ -16,7 +16,9 @@ export default {
 	}
  }
 </script>
-<style lang="less" scoped>
+
+
+<style lang="less" scope>
 	div{
 	  margin:20px;
 	}
