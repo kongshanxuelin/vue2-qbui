@@ -2,17 +2,24 @@
   <div id="app">
   	<div class="header">
         <img :src="logoUrl" class="logo"></img>
-        <span class="title sl-label2">
-        	QB风格组件库，支持QB浏览器,IE10+，Chrome，FF等现代浏览器;
-        	<button @click="showMenu" class="sl-btn primary" v-if="menuIcon == 'right'">显示菜单</button>
-        </span>
+        <span class="title sl-label2">商务工作记事册后台监控</span>
+        <div>
+            <router-link :to="{name:'home'}" exact>
+              Dashborad
+            </router-link>
+            <router-link :to="{name:'page1'}">
+              操作日志
+            </router-link>
+            <router-link :to="{name:'page2', params:{id:12}}">
+              用户列表
+            </router-link>
+      </div>
     </div>
-    <div class="flex-column flex-center flex-middle">
-    	  <div class="flex-item-24" style="text-align:center">
-					<span class="sl-label-yellow">Hello World </span>
-					<i style="color:orange" class="icon sumscope-icon icon-rocket"></i>
-				</div>
-    </div>
+    <div class="content">
+		  <transition name="slide-fade">
+		    <router-view></router-view>
+		  </transition>
+		</div>
     <v-dialog :clickToClose="false" />
   </div>
 </template>

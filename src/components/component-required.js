@@ -35,16 +35,40 @@ import Promise from 'promise-polyfill'
 
 import SLCtxMenu from './ctx-menu/index'
 
+//Treeview
+import SLZTree from './treeview/tree.vue';
+import SLComboZTree from './treeview/combotree.vue'
+
+//Editor
+import SLEditr from "./editor/Editr.vue";
+import bus from './editor/bus.js'; 
+
+//Charts
+import VueHighcharts from './highcharts/VueHighcharts.vue'
+
+//Multi-Select
+import Multiselect from './mselect/Multiselect'
+import multiselectMixin from './mselect/multiselectMixin'
+import pointerMixin from './mselect/pointerMixin'
+
+//Uploader
+import Uploader from './uploader/UploadFile'
+
 if (!window.Promise) {
 	window.Promise = Promise
 }
 
 export default {
-  install (Vue) {
+  install (Vue, userOptions = {}) {
   	
     Vue.component('sl-autocomplete', SLAutocomplete)
     Vue.component('sl-checkbox', SLCheckbox)
     Vue.component('sl-radio', SLRadio)
+    
+    Vue.component('sl-select', Multiselect)
+    //Uploader
+    Vue.component("sl-uploader", Uploader);
+    
     Vue.component('sl-switcher', SLSwitches)
     Vue.component('sl-menu', SLMenu)
     Vue.component('sl-ctxmenu',SLCtxMenu);
@@ -59,16 +83,74 @@ export default {
   	Vue.component("sl-table-pagination", VuetablePagination);
   	Vue.component("sl-table-pagination-dropdown", VuetablePaginationDropDown);
   	Vue.component("sl-table-pagination-info", VuetablePaginationInfo);
+  	//Treeview
+  	Vue.component('sl-tree', SLZTree);
+  	Vue.component('sl-combotree', SLComboZTree);
+  	
+  	//Editor
+  	bus.options = { ...bus.options, ...userOptions };
+    Vue.component("sl-editor", SLEditr);
+
+      
+    //Charts
+    Vue.component("sl-chart", VueHighcharts);
+
   
   }
+}
+
+/**
+ * generate key 0-1-2-3
+ * this is very important function for now module
+ * @param treeData
+ * @param parentKey
+ * @returns {Array}
+ */
+ const generateKey = (treeData = [], parentKey = '0') => {
+    treeData = treeData.map((item, i) => {
+        item.key = parentKey + '-' + i.toString();
+
+        if (item.hasOwnProperty('children') && item.children.length > 0) {
+            generateKey(item.children, item.key)
+        }
+
+        return item;
+    })
+    return treeData;
+}
+/**
+ * get parent node
+ * @param node { Object }
+ * @param treeData { Array }
+ * @returns { Object }
+ */
+const getParentNode = (node = {}, treeData = []) => {
+    let tem;
+    let postions = node.key.split('-');
+    for (let [index, item] of postions.entries()) {
+        switch (index) {
+            case 0:
+                break;
+            case 1:
+                tem = treeData[item];
+                break;
+            default:
+                tem = tem.children[item];
+        }
+    }
+    return tem
 }
 
 export { 
   SLAutocomplete, SLCollapse, SLCheckbox, SLRadio, 
   SLSwitches, SLMenu, SLCtxMenu, SLDatePicker,SLCard,SLTabs,SLTab,SLPullTo,
   Vuetable,
+  SLEditr,
   VuetablePagination,
   VuetablePaginationDropDown,
   VuetablePaginationInfo,
   VuetablePaginationMixin,
-  VuetablePaginationInfoMixin}
+  VuetablePaginationInfoMixin,
+  SLZTree,SLComboZTree, generateKey, getParentNode,
+  Multiselect, multiselectMixin, pointerMixin
+}

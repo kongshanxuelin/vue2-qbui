@@ -1,8 +1,9 @@
 {
-  "name": "sl-qbui",
+  "name": "wxnote",
   "version": "1.0.0",
-  "description": "Vue2 Components By QB Theme",
-  "main": "index.js",
+  "description": "xxx",
+  "author": "jacon.xue <jacon.xue@sumscope.com>",
+  "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
@@ -12,16 +13,22 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
-  "author": "cxlh",
   "license": "ISC",
   "dependencies": {
-      "highlight.js": "*",
-      "axios": "^0.15.3",
-      "vuetrend": "^0.2.2",
-      "tooltip.js": "^1.1.4",
-      "vue": "^2.4.2",
-      "vue-router": "^2.7.0",
-      "vuejs-datepicker": "^0.9.17"
+    "chai-as-promised": "latest",
+    "highcharts": "^6.0.3",
+    "highcharts-more-node": "latest",
+    "chinese-to-pinyin": "^0.1.6",
+    "debounce": "latest",
+    "highlight.js": "*",
+    "axios": "^0.15.3",
+    "vuetrend": "^0.2.2",
+    "tooltip.js": "^1.1.4",
+    "vue": "^2.4.2",
+    "vue-router": "^2.7.0",
+    "vuejs-datepicker": "^0.9.17",
+    "vue2-dropzone": "latest",
+    "wolfy87-eventemitter": "^5.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -97,6 +104,7 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
+    "pug": "^2.0.0-beta11",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

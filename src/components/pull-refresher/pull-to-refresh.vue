@@ -185,7 +185,7 @@
 	  padding:0;  
 	}
 	.pull-container li{
-		height:24px;
+	
 		padding:4px;
 	}
 	.pull-container li:nth-child(even) {
