@@ -2,18 +2,9 @@
   <div id="app">
   	<div class="header">
         <img :src="logoUrl" class="logo"></img>
-        <span class="title sl-label2">商务工作记事册后台监控</span>
-        <div>
-            <router-link :to="{name:'home'}" exact>
-              Dashborad
-            </router-link>
-            <router-link :to="{name:'page1'}">
-              操作日志
-            </router-link>
-            <router-link :to="{name:'page2', params:{id:12}}">
-              用户列表
-            </router-link>
-      </div>
+        <span class="title sl-label2">
+        	QB风格组件库，支持QB浏览器,IE10+，Chrome，FF等现代浏览器;
+        </span>
     </div>
     <div class="content">
 		  <transition name="slide-fade">

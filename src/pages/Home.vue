@@ -1,17 +1,31 @@
 <template >
   <div>
-  	<h2>统计数据</h2>
+		<h2>导航测试</h2>
+		<div>
+					<router-link :to="{name:'home'}" exact>
+            Home
+          </router-link>
+          <router-link :to="{name:'page1'}">
+            Page1
+          </router-link>
+          <router-link :to="{name:'page2', params:{id:12}}">
+            Page2
+          </router-link>
+		</div>
+  	<h2>项目说明</h2>
     <div class="m20">
-    		<span class="sl-label2">今日用户数：</span><span class="sl-label-yellow m15">{{stat.tUserNum}}</span>
-    		<span class="sl-label2">今日任务数：</span><span class="sl-label-yellow m15">{{stat.tTaskNum}}</span>
-    		<span class="sl-label2">今日计划数：</span><span class="sl-label-yellow m15">{{stat.tTodoNum}}</span>
+    		适用于符合QB风格的 单页面 Web应用，<a href="http://vueqbui.sumslack.com/" target="_blank">在线Demo</a>
     </div>
-		<div class="m20">
-    		<span class="sl-label2">总用户数：</span><span class="sl-label-yellow m15">{{stat.userNum}}</span>
-    		<span class="sl-label2">总任务数：</span><span class="sl-label-yellow m15">{{stat.taskNum}}</span>
-    		<span class="sl-label2">总计划数：</span><span class="sl-label-yellow">{{stat.todoNum}}</span>
+  	<h2>使用步骤</h2>    
+    <div>
+    	<ul>
+    		<li>
+    			<span class="sl-label2">拉取原型代码：</span><span class="code">git clone https://github.com/kongshanxuelin/vue2-qbui.git</span>
+    		</li>
+    		<li><span class="sl-label2">安装依赖：</span><span class="code">npm i</span></li>
+    		<li><span class="sl-label2">运行：</span><span class="code">npm run dev</span></li>
+    	</ul>
     </div>
-  	
   </div>
 </template>
 
@@ -20,14 +34,9 @@ export default {
   name: 'sumslack_label',
   data(){
   	return {
-				stat:{tTaskNum:0,tTodoNum:0,tUserNum:0,taskNum:0,todoNum:0,userNum:0}
+  	
   	}
-	},
-	created(){
-			this.$http.get(this.Config.url + "stat/stat.jhtml").then(json => {
-				this.stat = json.data;
-			})
-	},
+  },
   methods:{
 	}
  }
@@ -51,8 +60,5 @@ export default {
 	}
 	.code {
 		display: inline-block;padding:4px;background-color: #193d37;
-	}
-	.m15{
-		margin-right: 15px;
 	}
 </style>
